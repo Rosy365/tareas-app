@@ -24,6 +24,7 @@
   .btn-delete { background: #ff3633f8; color: white; border: none; }
   .btn-edit { background:#ffc72d; color:white; border:none; }
   .btn-dark{ background-color: #475295; border: none; }
+   body.dark .btn-dark{ background-color: #49cfff; border: none; }
 
   .file-link { display:block; margin-top:5px; color:#1976D2; cursor:pointer; }
   .date { font-size:0.9em; color:gray; }
@@ -95,7 +96,7 @@
     color: white;
   }
   body.dark .btn-filter { background: #333; color: #eee; }
-  body.dark .btn-filter.active { background: #4CAF50; color: white; }
+  body.dark .btn-filter.active { background: #4cadfc; color: white; }
 
   .modal {
     position: fixed;
@@ -155,8 +156,7 @@
 <body>
 <div class="container">
   <h1>Mis Tareas</h1>
-  <div class="darky"><button class="btn-dark" onclick="toggleDarkMode()">🌙</button></div>
-  
+  <div class="darky"><button id="themeToggle" class="btn-dark" onclick="toggleDarkMode()">🌙</button></div>
   <div class="card">
     <input type="text" id="title" placeholder="Nombre de la tarea">
     <textarea id="desc" placeholder="Descripción"></textarea>
@@ -237,7 +237,18 @@ let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 
 function saveTasks(){ localStorage.setItem('tasks', JSON.stringify(tasks)); }
-function toggleDarkMode(){ document.body.classList.toggle('dark'); }
+function toggleDarkMode() {
+  const body = document.body;
+  const btn = document.getElementById('themeToggle');
+  body.classList.toggle('dark');
+  if (body.classList.contains('dark')) {
+    btn.innerHTML = '☀️'; // Cambia a sol cuando está en modo oscuro // 
+    btn.style.textShadow = "0 0 10px #FFD700"; // Efecto de resplandor
+  } else {
+    btn.innerHTML = '🌙'; // Regresa a luna en modo claro 
+    btn.style.textShadow = "0 0 10px #FFD700";
+  }
+}
 
 function renderStats(){
   const container = document.getElementById('stats');
@@ -341,7 +352,7 @@ function renderTasks() {
       <div class="date" style="margin-top:5px; font-weight: ${isToday ? 'bold' : 'normal'}">
         ${task.date || 'Sin fecha'} ${isToday ? '— ¡Es hoy!' : ''}
       </div>
-      
+      ${task.fileData ? `<span class="file-link" onclick="openFile(${originalIndex})">📎 Ver archivo</span>` : ''}
       <div class="actions">
         <button class="btn-complete" onclick="toggleComplete(${originalIndex})">${task.completed ? '↩️' : '✅'}</button>
         <button class="btn-edit" onclick="openEdit(${originalIndex})">✏️</button>

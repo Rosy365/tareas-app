@@ -1,0 +1,146 @@
+body { font-family: Arial; margin: 20px; background: #f5f5f5; color:#000; }
+body.dark { background:#121212; color:#eee; }
+h1 { text-align: center; }
+.container { max-width: 600px; margin: auto; }
+.card { background: white; padding: 8px; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.opc{display: flex; justify-content: space-between;}
+body.dark .card { background:#1e1e1e; }
+
+.darky{display: flex; justify-content: flex-end; margin-bottom: 10px;}
+
+input, select, textarea { width: 94%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ddd; }
+button { width: 20%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ddd; }
+body.dark input, body.dark select, body.dark textarea { background:#2a2a2a; color:#eee; border:1px solid #d5c8c8; }
+.date{width: 40%;}
+
+.btn-primary { background: #4cadfc; color: white; border: none; }
+.btn-delete { background: #ff3633f8; color: white; border: none; }
+.btn-edit { background:#ffc72d; color:white; border:none; }
+.btn-dark{ background-color: #475295; border: none; }
+body.dark .btn-dark{ background-color: #49cfff; border: none; }
+
+.file-link { display:block; margin-top:5px; color:#1976D2; cursor:pointer; }
+.date { font-size:0.9em; color:gray; }
+
+/* Color para tareas importantes */
+.priority-important {
+  border-left: 8px solid #FFD700 !important;
+  background: #fffdf0 !important;
+}
+
+body.dark .priority-important {
+  background: #2d2a10 !important;
+  border-left: 8px solid #ccac00 !important;
+}
+
+/* Ajuste para que las vencidas tengan prioridad visual sobre las importantes */
+.overdue {
+  background: #7d8eff1e  !important;
+  border-left: 8px solid #878787da !important;
+}
+
+/* Tarea próxima a vencer */
+.near-deadline {
+  background: #fde9e9 !important;
+  border-left: 8px solid #e53935 !important;
+}
+
+body.dark .near-deadline {
+  background: #3c1e1e !important;
+  border-left: 8px solid #d32f2f !important;
+}
+
+/* Contenedor de botones en una fila */
+.actions {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+.actions button {
+  flex: 1;
+  margin-top: 0;
+  padding: 8px 2px;
+  font-size: 0.9em;
+}
+
+/* Estilo para tarea completada */
+.task-done {
+  opacity: 0.6;
+  text-decoration: line-through;
+  background: #e8f5e9 !important;
+}
+body.dark .task-done { background: #1b5e20 !important; }
+
+.btn-complete { background: #58ca5c; color: white; border: none; }
+
+.btn-filter {
+  background: #eee;
+  color: #333;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.85em;
+  transition: all 0.3s;
+}
+.btn-filter.active {
+  background: #4cadfc;
+  color: white;
+}
+body.dark .btn-filter { background: #333; color: #eee; }
+body.dark .btn-filter.active { background: #4cadfc; color: white; }
+
+.modal {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  width:90%; max-width:500px;
+  max-height:80vh;
+  overflow:auto;
+}
+
+body.dark .modal-content { background:#1e1e1e; }
+
+.calendar-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+ .calendar-header button{
+  width:auto;
+  padding:5px 10px;
+}
+
+.calendar-day{
+  padding:10px;
+  border-radius:8px;
+  text-align:center;
+  cursor:pointer;
+  background:#eee;
+  color:#000;
+}
+
+body.dark .calendar-day{
+  background:#2a2a2a;
+  color:#eee;
+}
+
+.link-task{
+  cursor:pointer;
+  color:#42a8fb;
+  margin-bottom:5px;
+}

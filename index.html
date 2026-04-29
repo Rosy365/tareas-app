@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div class="container">
+  <h1>Mis Tareas</h1>
+  <div class="darky">
+    <button id="themeToggle" class="btn-dark" onclick="toggleDarkMode()">
+      🌙
+    </button>
+  </div>
+  
+  <div class="card">
+    <input type="text" id="title" placeholder="Nombre de la tarea">
+    <textarea id="desc" placeholder="Descripción"></textarea>
+    <div class="opc">
+        <input type="date" id="date" class="date">
+        <label>⭐ Importante<input type="checkbox" id="important"></label>
+    </div>
+    <input type="file" id="file">
+    <div class="darky"><button class="btn-primary" onclick="addTask()">💾</button></div>
+  </div>
+
+  <div class="card" id="stats"></div>
+
+  <div class="card">
+    <input type="text" id="searchBar" placeholder="🔍 Buscar tarea..." onkeyup="updateSearch()">
+    <div style="display: flex; gap: 5px; overflow-x: auto; margin-top: 10px; padding-bottom: 5px;">
+      <button class="btn-filter active" onclick="filterTasks('all', this)">📚</button>
+      <button class="btn-filter" onclick="filterTasks('pending', this)">📓</button>
+      <button class="btn-filter" onclick="filterTasks('important', this)">⭐</button>
+      <button class="btn-filter" onclick="filterTasks('normal', this)">📄</button>
+      <button class="btn-filter" onclick="filterTasks('completed', this)">✅</button>
+    </div>
+  </div>
+  <div id="tasks"></div>
+</div>
+
+<div class="modal" id="editModal">
+  <div class="modal-content">
+    <h3>Editar tarea</h3>
+    <input type="text" id="editTitle">
+    <textarea id="editDesc"></textarea>
+    <div class="opc">
+      <input type="date" id="editDate" class="date">
+      <label><input type="checkbox" id="editImportant">⭐</label>
+    </div>
+    <input type="file" id="editFile">
+    <button onclick="saveEdit()">💾</button>
+    <button onclick="removeFile()">🗑️📎</button>
+    <button onclick="closeModal()">❌</button>
+  </div>
+</div>
+
+<div class="modal" id="dayModal">
+  <div class="modal-content">
+    <h3 id="dayTitle"></h3>
+    <div id="dayTasks"></div>
+    <button onclick="closeDayModal()">❌</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h3>📅 Calendario</h3>
+    <div class="calendar-header">
+      <button onclick="prevMonth()">⬅️</button>
+      <strong id="monthLabel"></strong>
+      <button onclick="nextMonth()">➡️</button>
+    </div>
+    <div id="calendar"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -71,6 +71,7 @@ function toggleDarkMode() {
   const btn = document.getElementById('themeToggle');
   body.classList.toggle('dark');
   btn.innerHTML = body.classList.contains('dark') ? '☀️' : '🌙';
+  btn.style.textShadow = body.classList.contains('dark') ? "0 0 10px #FFD700" : "0 0 10px #0044FF";
 }
 
 function addTask() {
@@ -238,7 +239,7 @@ function renderCalendar() {
   const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   label.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
-  const daysHeader = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+  const daysHeader = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
   let html = '<div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:5px; text-align:center;">';
   
   daysHeader.forEach(day => {
